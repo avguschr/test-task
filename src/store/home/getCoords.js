@@ -7,20 +7,20 @@ const getCoords = () => ({
   },
   actions: {
     async getCoords(context, city) {
-      const headers = { "Content-Type": "application/json" };
+      const headers = { "Content-Type": "application/json" }
       await axios({
         method: "get",
         headers,
         url: `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=305bc8eb077a1be825aaed58269d86cf`,
       })
-        .then((result) => {
+        .then(result => {
           this.coords = {
               lat: result.data[0].lat,
               lon: result.data[0].lon
           }
         })
-        .catch((e) => console.log(e));
-      context.commit("saveCoords", this.coords);
+        .catch((e) => console.log(e))
+      context.commit("saveCoords", this.coords)
     },
   },
   mutations: {
