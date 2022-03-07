@@ -28,7 +28,9 @@ const getWeather = () => ({
         }
     },
     getters: {
-        weather: state => state.weather
+        weather(state) {
+            return state.weather
+        }
     }
 })
 

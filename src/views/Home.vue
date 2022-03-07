@@ -1,44 +1,30 @@
 <template>
   <div :class="[$style.background, date.getHours() < 18 ? $style.morning : $style.night]">
     <div class="container">
-          <p :class="$style.red">{{ getDate }}</p>
+    <p :class="$style.red">{{ getDate }}</p>
     <p>{{ getTime }}</p>
-    <p>{{weather}}</p>
+    <change-city />
     <weather />
-    <form method="get">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input
-          v-model="city"
-          type="text"
-          class="form-control"
-          id="city"
-        />
-      </div>
-      <button class="btn btn-warning" @click.prevent="getCoords(city)">Выбрать</button>
-      <button @click.prevent="getWeather(getCoordinates)">fghghf</button>
-    </form>  
     </div>
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 import Weather from '../components/home/Weather'
+import ChangeCity from '../components/home/ChangeCity'
 export default {
   name: "home-page",
   components: {
-    Weather
+    Weather, ChangeCity
   },
   data() {
     return {
       date: new Date(),
-      city: "Tomsk",
       coords: JSON.parse(localStorage.getItem('coords'))
     };
   },
   methods: {
     ...mapActions({getCoords: 'home/getCoords/getCoords', getWeather: 'home/getWeather/getWeather'}),
-    ...mapGetters({weather: 'home/getCoords/weather'})
   },
   computed: {
     getDate() {
@@ -51,6 +37,9 @@ export default {
       return this.coords
     }
   },
+  created() {
+    this.getWeather(localStorage.coords ? (JSON.parse(localStorage.coords)) : { "lon": 84.9523, "lat": 56.4887 })
+  }
 };
 </script>
 <style module>

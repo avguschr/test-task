@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <p>Температура</p>
-        <p>Описание</p>
+    <div v-if="weather">
         {{weather}}
     </div>
 </template>
@@ -9,10 +7,8 @@
 import {mapGetters} from 'vuex'
 export default {
     name: 'weather-component',
-    methods: {
-        ...mapGetters({
-            weather: 'home/getWeather/weather'
-        })
+    computed: {
+        ...mapGetters({weather: 'home/getWeather/weather'}),
     }
 }
 </script>
