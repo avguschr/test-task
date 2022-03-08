@@ -5,7 +5,7 @@ const home = () => ({
   namespaced: true,
   modules: {
     getCoords: getCoords(),
-    getWeather: getWeather()
+    getWeather: getWeather(),
   },
 });
 
