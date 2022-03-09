@@ -1,0 +1,8 @@
+h1, h2, h3, h4, h5, label {
+    font-family: quicksand;
+}
+
+h1 {
+    color: gray;
+    font-size: 20px;
+}

@@ -5,12 +5,12 @@
         <label class="mb-3" for="exampleFormControlInput1">Change city</label>
         <input v-model="city" type="text" class="form-control mb-3" id="city" />
       </div>
-      <button class="btn" @click.prevent="getCoords(city)">Выбрать</button>
+      <button class="btn btn-primary" @click.prevent="getCoordinates">Select</button>
     </form>
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "change-city",
   data() {
@@ -19,8 +19,19 @@ export default {
     };
   },
   methods: {
-    ...mapActions({ getCoords: "home/getCoords/getCoords" }),
+    ...mapActions({ getCoords: "home/getCoords/getCoords", getWeather: "home/getWeather/getWeather" }),
+    async getCoordinates() {
+      if (this.city !== '') {
+        await this.getCoords(this.city)
+        await this.getWeather(this.coords)
+      }
+      this.city = ''
+    }
   },
+  computed: {
+    ...mapGetters({coords: "home/getCoords/coords"})
+  }
 };
 </script>
-<style></style>
+<style>
+</style>

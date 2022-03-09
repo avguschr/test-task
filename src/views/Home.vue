@@ -2,7 +2,7 @@
   <div
     :class="[
       $style.background,
-      date.getHours() < 18 ? $style.morning : $style.night,
+      (date.getHours() < 18 || date.getHours() > 5) ? $style.morning : $style.night,
     ]"
   >
     <div class="container pt-5">
@@ -10,61 +10,63 @@
         :class="$style.content"
         class="row d-flex justify-content-between mb-2"
       >
+    <div class="col-6">
         <div
           style="background: rgba(255, 255, 255, 0.8)"
-          class="item col-5 card border-0 p-2 d-flex justify-content-center"
-        >
-          <p>Today's {{ getDate }}</p>
-          <p>It's {{ getTime }} now</p>
-        </div>
-        <div
-          style="background: rgba(255, 255, 255, 0.8)"
-          class="col-6 card border-0 p-2"
+          class="card border-0 p-4 mb-3"
         >
           <change-city />
         </div>
-      </div>
-      <div class="row">
+                <div
+          style="background: rgba(255, 255, 255, 0.8)"
+          class="mb-3 card border-0 p-4 d-flex justify-content-center"
+        >
+          <current-information :date="date" />
+        </div>
+          <div
+          style="background: rgba(255, 255, 255, 0.8)"
+          class="card border-0 p-4"
+        >
+          <weather :weather="weather" />
+        </div>
+    </div>
+    <div class="col-6">
         <div
           style="background: rgba(255, 255, 255, 0.8)"
-          class="col-5 card border-0 p-2"
+          class="card border-0 p-4"
         >
-          <weather />
+          <about-today />
         </div>
-      </div>
+    </div>
+       
+      </div>               
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
-import { format } from "date-fns";
-import Weather from "../components/home/Weather";
-import ChangeCity from "../components/home/ChangeCity";
+import { mapActions, mapGetters } from "vuex"
+import Weather from "../components/home/Weather"
+import ChangeCity from "../components/home/ChangeCity"
+import CurrentInformation from "../components/home/CurrentInformation"
+import AboutToday from "../components/home/AboutToday"
 export default {
   name: "home-page",
   components: {
     Weather,
     ChangeCity,
+    CurrentInformation,
+    AboutToday
   },
   data() {
     return {
       date: new Date(),
-      coords: ''
     };
   },
   methods: {
     ...mapActions({ getWeather: "home/getWeather/getWeather" }),
   },
   computed: {
-    getDate() {
-      return format(this.date, "MMMM dd yyyy");
-    },
-    getTime() {
-      return format(this.date, "H:mm:ss");
-    },
-    getCoordinates() {
-      return this.coords;
-    },
+    ...mapGetters({ weather: "home/getWeather/weather"}),
   },
   created() {
     this.getWeather(
@@ -80,10 +82,6 @@ export default {
 }
 .night {
   background: #45455c;
-}
-
-.background {
-  height: 100vh;
 }
 
 .content {

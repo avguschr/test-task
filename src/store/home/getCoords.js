@@ -30,6 +30,9 @@ const getCoords = () => ({
       //   console.log(JSON.parse(localStorage.getItem('coords')).lat)
     },
   },
+  getters: {
+    coords: state => state.coords
+  }
 });
 
 export default getCoords;
