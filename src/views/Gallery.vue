@@ -1,13 +1,9 @@
 <template>
-    <div>
-        gvghvgvhvg
-    </div>
+  <div>gvghvgvhvg</div>
 </template>
 <script>
 export default {
-    name: 'gallery-page'
-}
+  name: "gallery-page",
+};
 </script>
-<style>
-    
-</style>
+<style></style>

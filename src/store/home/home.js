@@ -7,7 +7,7 @@ const home = () => ({
   modules: {
     getCoords: getCoords(),
     getWeather: getWeather(),
-    aboutToday: aboutToday()
+    aboutToday: aboutToday(),
   },
 });
 

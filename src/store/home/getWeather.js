@@ -18,19 +18,19 @@ const getWeather = () => ({
           // console.log(result.data)
         })
         .catch((e) => console.log(e));
-      context.commit("getWeather", this.weather)
+      context.commit("getWeather", this.weather);
     },
   },
   mutations: {
     getWeather(state, data) {
-      state.weather = data
+      state.weather = data;
     },
   },
   getters: {
     weather(state) {
-      return state.weather
+      return state.weather;
     },
   },
 });
 
-export default getWeather
+export default getWeather;
