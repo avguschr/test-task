@@ -2,7 +2,7 @@
   <div>
     <form class="mb-3" method="get">
       <div class="form-group">
-        <label class="mb-3" for="exampleFormControlInput1">Change city</label>
+        <label class="mb-3" for="city">Change city</label>
         <input
           @keypress.enter="getCoordinates"
           v-model="city"

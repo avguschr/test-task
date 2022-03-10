@@ -102,4 +102,8 @@ export default {
   position: relative;
   z-index: 99;
 }
+
+img {
+  width: 100%;
+}
 </style>
