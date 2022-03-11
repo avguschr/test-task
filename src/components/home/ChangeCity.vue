@@ -38,7 +38,6 @@ export default {
     async getCoordinates() {
       if (this.city !== "") {
         await this.getCoords(this.city);
-        console.log(this.coords);
         if (this.coords) {
           await this.getWeather(this.coords);
         }

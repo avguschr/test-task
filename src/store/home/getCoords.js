@@ -33,6 +33,7 @@ const getCoords = () => ({
       } else {
         state.error = 'You entered the name of the city incorrectly!'
       }
+      this.coords = null
       //   console.log(JSON.parse(localStorage.getItem('coords')).lat)
     },
   },

@@ -20,9 +20,9 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "weather-component",
-  props: ["weather"],
   data() {
     return {
       icons: {
@@ -47,6 +47,10 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters({ weather: "home/getWeather/weather" })
+  },
+
 };
 </script>
 <style module>

@@ -5,7 +5,7 @@ const gallery = () => ({
   namespaced: true,
   modules: {
     search: search(),
-    random: random()
+    random: random(),
   },
 })
 

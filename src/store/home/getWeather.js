@@ -15,7 +15,6 @@ const getWeather = () => ({
       })
         .then((result) => {
           this.weather = result.data;
-          // console.log(result.data)
         })
         .catch((e) => console.log(e));
       context.commit("getWeather", this.weather);

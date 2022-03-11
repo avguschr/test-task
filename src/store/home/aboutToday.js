@@ -15,7 +15,6 @@ const aboutToday = () => ({
       })
         .then((result) => {
           this.data = result.data;
-          console.log(result.data);
         })
         .catch((e) => console.log(e));
       context.commit("aboutToday", this.data);

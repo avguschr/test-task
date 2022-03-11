@@ -25,7 +25,7 @@
               style="background: rgba(255, 255, 255, 0.8)"
               class="card border-0 p-4 mb-3"
             >
-              <weather :weather="weather" />
+              <weather />
             </div>
           </div>
           <div class="d-flex justify-content-center">
@@ -54,7 +54,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 import Weather from "../components/home/Weather";
 import ChangeCity from "../components/home/ChangeCity";
 import CurrentInformation from "../components/home/CurrentInformation";
@@ -77,9 +77,6 @@ export default {
     isMorning() {
       return this.date.getHours() < 18 && this.date.getHours() > 5;
     },
-  },
-  computed: {
-    ...mapGetters({ weather: "home/getWeather/weather" }),
   },
   created() {
     this.getWeather(
