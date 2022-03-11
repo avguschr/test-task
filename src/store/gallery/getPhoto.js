@@ -1,27 +1,27 @@
 import axios from "axios";
 
-const random = () => ({
+const getPhoto = () => ({
   namespaced: true,
   state: {
     result: {},
   },
   actions: {
-    async random(context) {
+    async getPhoto(context, id) {
       const headers = { "Content-Type": "application/json" };
       await axios({
         method: "get",
         headers,
-        url: `https://api.unsplash.com/photos/random/?client_id=pxE-MVqupeYHZcUI9Sri7m-Q2LNKSmfrsE21KarirtA`,
+        url: `https://api.unsplash.com/photos/${id}/?client_id=pxE-MVqupeYHZcUI9Sri7m-Q2LNKSmfrsE21KarirtA`,
       })
         .then((result) => {
-          this.result = result.data;
+          this.result = result;
         })
         .catch((e) => console.log(e));
-      context.commit("random", this.result);
+      context.commit("getPhoto", this.result);
     },
   },
   mutations: {
-    random(state, data) {
+    getPhoto(state, data) {
       state.result = data;
     },
   },
@@ -30,4 +30,4 @@ const random = () => ({
   },
 });
 
-export default random;
+export default getPhoto;

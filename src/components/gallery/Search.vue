@@ -17,33 +17,34 @@
       </button>
     </form>
     <div v-if="error" class="alert alert-danger col-6" role="alert">
-      {{error}}
+      {{ error }}
     </div>
   </div>
 </template>
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import { mapActions, mapGetters } from "vuex";
 export default {
-  name: 'search-component',
-  data () {
-    return ({
-      text: '',
-    })
+  name: "search-component",
+  data() {
+    return {
+      text: "",
+    };
   },
   computed: {
-    ...mapGetters({error: 'gallery/search/error', photo: 'gallery/random/photo'})
+    ...mapGetters({
+      error: "gallery/search/error",
+      photo: "gallery/random/photo",
+    }),
   },
   methods: {
-    ...mapActions({search: 'gallery/search/search'}),
+    ...mapActions({ search: "gallery/search/search" }),
     searchPhotos() {
       if (this.text) {
-        this.search({text: this.text, page: 1})
-        this.text = ''
+        this.search({ text: this.text, page: 1 });
+        this.text = "";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
-<style>
-  
-</style>
+<style></style>

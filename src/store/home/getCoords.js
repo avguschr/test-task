@@ -4,7 +4,7 @@ const getCoords = () => ({
   namespaced: true,
   state: {
     coords: {},
-    error: ''
+    error: "",
   },
   actions: {
     async getCoords(context, city) {
@@ -28,18 +28,18 @@ const getCoords = () => ({
     saveCoords(state, data) {
       state.coords = data;
       if (state.coords) {
-        localStorage.setItem("coords", JSON.stringify(data))
-        state.error = ""
+        localStorage.setItem("coords", JSON.stringify(data));
+        state.error = "";
       } else {
-        state.error = 'You entered the name of the city incorrectly!'
+        state.error = "You entered the name of the city incorrectly!";
       }
-      this.coords = null
+      this.coords = null;
       //   console.log(JSON.parse(localStorage.getItem('coords')).lat)
     },
   },
   getters: {
     coords: (state) => state.coords,
-    error: (state) => state.error
+    error: (state) => state.error,
   },
 });
 

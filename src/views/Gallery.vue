@@ -5,14 +5,14 @@
   </div>
 </template>
 <script>
-import Search from '../components/gallery/Search'
-import Collection from '../components/gallery/Collection'
+import Search from "../components/gallery/Search";
+import Collection from "../components/gallery/Collection";
 export default {
   name: "gallery-page",
   components: {
     Search,
-    Collection
-  }
+    Collection,
+  },
 };
 </script>
 <style></style>

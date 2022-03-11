@@ -1,5 +1,5 @@
-import random from './random'
-import search from './search'
+import random from "./random";
+import search from "./search";
 
 const gallery = () => ({
   namespaced: true,
@@ -7,6 +7,6 @@ const gallery = () => ({
     search: search(),
     random: random(),
   },
-})
+});
 
-export default gallery
+export default gallery;
