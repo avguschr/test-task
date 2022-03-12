@@ -1,28 +1,22 @@
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
-    module: {
-        rules: [
-          // ... другие правила опущены
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "vue-style-loader",
           {
-            test: /\.css$/,
-            use: [
-              'vue-style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  // включаем CSS модули
-                  modules: true,
-                  // настраиваем генерируемое имя класса
-                  localIdentName: '[local]_[hash:base64:8]'
-                }
-              }
-            ]
-          }
-        ]
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localIdentName: "[local]_[hash:base64:8]",
+            },
+          },
+        ],
       },
-  plugins: [
-    // убедитесь что подключили плагин!
-    new VueLoaderPlugin()
-  ]
-}
+    ],
+  },
+  plugins: [new VueLoaderPlugin()],
+};
